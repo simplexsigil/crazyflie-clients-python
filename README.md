@@ -3,7 +3,7 @@ This is a forked repository, not the original one provided by bitcraze.
 
 Currently we implemented the following changes:
 
-* Enabled hovermode control via zmq in cfzmqcrazyflie connection server.
+* Enabled hovermode control via zmq in cfzmq crazyflie connection server.
 
 # Crazyflie PC client [![Build Status](https://api.travis-ci.org/bitcraze/crazyflie-clients-python.svg)](https://travis-ci.org/bitcraze/crazyflie-clients-python) [![Build status](https://ci.appveyor.com/api/projects/status/u2kejdbc9wrexo31?svg=true)](https://ci.appveyor.com/project/bitcraze/crazyflie-clients-python)
 
