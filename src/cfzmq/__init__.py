@@ -310,8 +310,12 @@ class _CtrlThread(Thread):
     def run(self):
         while True:
             cmd = self._socket.recv_json()
-            self._cf.commander.send_setpoint(cmd["roll"], cmd["pitch"],
-                                             cmd["yaw"], cmd["thrust"])
+            if "hovermode" in cmd.keys() and cmd["hovermode"] is True:
+                self._cf.commander.send_hover_setpoint(cmd["xvel"], cmd["yvel"], cmd["yaw"], cmd["z"])
+            else:
+                self._cf.commander.send_setpoint(cmd["roll"], cmd["pitch"],cmd["yaw"], cmd["thrust"])
+
+
 
 
 class ZMQServer():
