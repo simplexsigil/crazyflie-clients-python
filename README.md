@@ -151,6 +151,7 @@ The Crazyflie PC client has the following dependencies:
   * PyQtGraph
   * ZMQ
   * appdirs
+  * PyYAML
 
 ### Setting udev permissions
 
