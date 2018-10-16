@@ -311,11 +311,12 @@ class _CtrlThread(Thread):
         while True:
             cmd = self._socket.recv_json()
             if "hovermode" in cmd.keys() and cmd["hovermode"] is True:
+                #print("Sending hover command")
                 self._cf.commander.send_hover_setpoint(cmd["xvel"], cmd["yvel"], cmd["yaw"], cmd["z"])
+            elif "position_mode" in cmd.keys() and cmd["position_mode"] is True:
+                self._cf.commander.send_position_setpoint(cmd["x"], cmd["y"],cmd["z"], cmd["yaw"])
             else:
-                self._cf.commander.send_setpoint(cmd["roll"], cmd["pitch"],cmd["yaw"], cmd["thrust"])
-
-
+                self._cf.commander.send_setpoint(cmd["roll"], cmd["pitch"], cmd["yaw"], cmd["thrust"])
 
 
 class ZMQServer():
@@ -370,6 +371,8 @@ def main():
         logging.basicConfig(level=logging.DEBUG)
     else:
         logging.basicConfig(level=logging.INFO)
+
+    print("Started adapted Server with hovermode control.")
 
     ZMQServer(args.url)
 
